@@ -15,9 +15,12 @@ A client has the following properties:
 * REST API must be implemented using NodeJS and Express.
 * DBMS used must be MySQL.
 * Frontend must be implemented using either AngularJS or React (if you`ll use React, [click here](https://github.com/cloudiabot/cloudia_front_end_test/blob/master/README.md#if-using-react)).
-* All parts written in JavaScript must use ES6.
+* All parts written in JavaScript must use ES6+.
+* ORM (Sequelize)
 * Git and Git Flow for version control.
 * Preferebly, the deploy must be on AWS.
+* Using DDD is a huge plus.
+* Using typescript is a must.
 
 ## Evaluation Criteria
 
