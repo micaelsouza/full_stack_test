@@ -2,7 +2,7 @@
 Teste para DEV Full Stack Node.js + AngularJS/React
 
 # Client Management System
-Create a complete web application (backend, frontend and database) where is possible to view clients in a list, edit, delete and register new ones.
+Create a complete web application (backend, frontend and database) where it is possible to view clients in a list, edit, delete and register new ones.
 
 A client has the following properties:
 - name
