@@ -48,7 +48,12 @@ router.get(
     const { limit, offset } = req.query;
 
     try {
-      const users = await User.findAll({ limit, offset, where: {} });
+      const users = await User.findAll({
+        limit,
+        offset,
+        where: {},
+        order: [['createdAt', 'DESC']],
+      });
       res.json(users);
     } catch (e) {
       next(e);
