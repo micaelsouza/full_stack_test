@@ -1,27 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalState';
 
+import Hero from '../components/Hero';
 import UserForm from '../components/UserForm';
-
-const Hero = ({ user }) => (
-  <section className="hero is-info">
-    <div className="hero-body">
-      <div className="container">
-        <div className="level">
-          <div className="level-left">
-            <h1 className="title">Edit User</h1>
-          </div>
-          <div className="level-right">
-            <Link to="/" className="button is-light">
-              Back to list
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
 
 export default (route) => {
   const { selectedUser, selectUser, editUser } = useContext(GlobalContext);
@@ -36,7 +18,11 @@ export default (route) => {
 
   return (
     <>
-      <Hero />
+      <Hero>
+        <Link to="/" className="button is-light">
+          Back to list
+        </Link>
+      </Hero>
       <div className="section">
         <div className="container">
           <UserForm user={selectedUser} onSubmit={submitForm} submitMessage="Save user" />

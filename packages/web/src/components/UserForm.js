@@ -1,7 +1,10 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/forbid-prop-types */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-export default ({
-  user, onSubmit, submitMessage = 'Add user', disabled = false,
+const UserForm = ({
+  user, onSubmit, submitMessage, disabled,
 }) => {
   const [name, setName] = useState('');
   const [cpf, setCPF] = useState('');
@@ -31,12 +34,15 @@ export default ({
     <form onSubmit={submitForm}>
       <div className="field is-horizontal">
         <div className="field-label is-normal">
-          <label className="label">Name</label>
+          <label htmlFor="user-form-name" className="label">
+            Name
+          </label>
         </div>
         <div className="field-body">
           <div className="field">
             <div className="control is-expanded">
               <input
+                id="user-form-name"
                 className="input"
                 type="text"
                 placeholder="Jhon Doe"
@@ -53,12 +59,15 @@ export default ({
 
       <div className="field is-horizontal">
         <div className="field-label is-normal">
-          <label className="label">CPF</label>
+          <label htmlFor="user-form-cpf" className="label">
+            CPF
+          </label>
         </div>
         <div className="field-body">
           <div className="field">
             <div className="control is-expanded">
               <input
+                id="user-form-cpf"
                 className="input"
                 type="text"
                 placeholder="0000000000"
@@ -70,19 +79,22 @@ export default ({
                 required
               />
             </div>
-            <p className="help">Just numbers</p>
+            {!disabled ? <p className="help">Just numbers</p> : null}
           </div>
         </div>
       </div>
 
       <div className="field is-horizontal">
         <div className="field-label is-normal">
-          <label className="label">E-Mail</label>
+          <label htmlFor="user-form-email" className="label">
+            E-Mail
+          </label>
         </div>
         <div className="field-body">
           <div className="field">
             <div className="control is-expanded">
               <input
+                id="user-form-email"
                 className="input"
                 type="email"
                 placeholder="jhondoe@mail.com"
@@ -98,17 +110,20 @@ export default ({
 
       <div className="field is-horizontal">
         <div className="field-label is-normal">
-          <label className="label">Phone Number</label>
+          <label htmlFor="user-form-phonenumber" className="label">
+            Phone Number
+          </label>
         </div>
         <div className="field-body">
           <div className="field-body">
             <div className="field is-expanded">
               <div className="field has-addons">
                 <p className="control">
-                  <a className="button is-static">+55</a>
+                  <span className="button is-static">+55</span>
                 </p>
                 <p className="control is-expanded">
                   <input
+                    id="user-form-phonenumber"
                     className="input"
                     type="tel"
                     placeholder="83988886666"
@@ -121,7 +136,7 @@ export default ({
                   />
                 </p>
               </div>
-              <p className="help">Do not enter the first zero</p>
+              {!disabled ? <p className="help">Do not enter the first zero</p> : null}
             </div>
           </div>
         </div>
@@ -133,7 +148,9 @@ export default ({
           <div className="field-body">
             <div className="field">
               <div className="control">
-                <button className="button is-primary">{submitMessage}</button>
+                <button type="submit" className="button is-primary">
+                  {submitMessage}
+                </button>
               </div>
             </div>
           </div>
@@ -142,3 +159,19 @@ export default ({
     </form>
   );
 };
+
+UserForm.propTypes = {
+  user: PropTypes.object,
+  onSubmit: PropTypes.func,
+  submitMessage: PropTypes.string,
+  disabled: PropTypes.bool,
+};
+
+UserForm.defaultProps = {
+  user: null,
+  onSubmit: null,
+  submitMessage: 'Save user',
+  disabled: false,
+};
+
+export default UserForm;

@@ -1,29 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalState';
 
+import Hero from '../components/Hero';
 import UsersList from '../components/UsersList';
 
-const Hero = () => (
-  <section className="hero is-info">
-    <div className="hero-body">
-      <div className="container">
-        <div className="level">
-          <div className="level-left">
-            <h1 className="title">Users</h1>
-          </div>
-          <div className="level-right">
-            <Link className="button is-light" to="/add">
-              Add user
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-export default ({ history }) => {
+export default (route) => {
   const {
     status, users, getUsers, removeUser,
   } = useContext(GlobalContext);
@@ -33,22 +15,27 @@ export default ({ history }) => {
   }
 
   function redirectToUser(id) {
-    history.push(`/view/${id}`);
+    route.history.push(`/view/${id}`);
   }
 
   function redirectToEditUser(id) {
-    history.push(`/edit/${id}`);
+    route.history.push(`/edit/${id}`);
   }
 
   function confirmAndDeleteUser(id) {
-    if (confirm('Do you really want delete this user?')) {
+    /* eslint-disable-next-line no-alert */
+    if (window.confirm('Do you really want delete this user?')) {
       removeUser(id);
     }
   }
 
   return (
     <>
-      <Hero />
+      <Hero>
+        <Link to="/add" className="button is-light">
+          Add User
+        </Link>
+      </Hero>
       <div className="section">
         <div className="container">
           {users.length === 0 && status === 'fetching' ? (
@@ -63,6 +50,7 @@ export default ({ history }) => {
           )}
 
           <button
+            type="button"
             className={`button is-primary ${status === 'fetching' ? 'is-loading is-disabled' : ''}`}
             onClick={loadMoreUsers}
           >

@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+/* eslint-disable react/forbid-prop-types */
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { GlobalContext } from '../context/GlobalState';
-
-export default ({
+const UserList = ({
   users, onRemoveUser, onEditUser, onSelect,
 }) => {
   if (users.length === 0) return <div className="notification is-info">Users list is empty</div>;
@@ -29,13 +29,13 @@ export default ({
             <td>{phonenumber}</td>
             <td>
               <div className="buttons are-small">
-                <button className="button is-primary" onClick={() => onSelect(id)}>
+                <button type="button" className="button is-primary" onClick={() => onSelect(id)}>
                   View
                 </button>
-                <button className="button" onClick={() => onEditUser(id)}>
+                <button type="button" className="button" onClick={() => onEditUser(id)}>
                   Edit
                 </button>
-                <button className="button is-danger" onClick={() => onRemoveUser(id)}>
+                <button type="button" className="button is-danger" onClick={() => onRemoveUser(id)}>
                   Remove
                 </button>
               </div>
@@ -46,3 +46,21 @@ export default ({
     </table>
   );
 };
+
+// users, onRemoveUser, onEditUser, onSelect,
+
+UserList.propTypes = {
+  users: PropTypes.array,
+  onRemoveUser: PropTypes.func,
+  onEditUser: PropTypes.func,
+  onSelect: PropTypes.func,
+};
+
+UserList.defaultProps = {
+  users: [],
+  onRemoveUser: null,
+  onEditUser: null,
+  onSelect: null,
+};
+
+export default UserList;

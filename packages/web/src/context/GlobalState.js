@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 import React, { createContext, useReducer, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppReducer from './AppReducer';
@@ -15,10 +17,6 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
   const history = useHistory();
-
-  useEffect(() => {
-    getUsers();
-  }, []);
 
   function getUsers(offset = 0) {
     dispatch({ type: 'SET_STATUS', payload: 'fetching' });
@@ -104,6 +102,10 @@ export const GlobalProvider = ({ children }) => {
         dispatch({ type: 'SET_STATUS', payload: 'fetched' });
       });
   }
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   return (
     <GlobalContext.Provider
