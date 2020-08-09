@@ -1,0 +1,35 @@
+{
+  "name": "web",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel --port 8080 src/index.html",
+    "build": "parcel build src/index.html",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react-router-dom": "^5.1.5",
+    "bulma": "^0.9.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@types/react": "^16.9.44",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "parcel-bundler": "^1.12.4"
+  }
+}

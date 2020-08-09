@@ -1,46 +1,35 @@
-# full_stack_test
-Teste para DEV Full Stack Node.js + AngularJS/React
+# Configurando o ambiente
 
-# Client Management System
-Create a complete web application (backend, frontend and database) where it is possible to view clients in a list, edit, delete and register new ones.
+Antes de tudo será preciso criar uma instância do banco de dados na máquina em que esse projeto será testado. Até ia rolar um setup com docker mas com esse prazo não vai rolar.
 
-A client has the following properties:
-- name
-- CPF
-- email
-- phone number (brazilian format)
+O banco deve ser criado com o `username=root` e `password=null`. Todo o restante será feito pelo sequelize depois que o comando de _migrations_ for executado.
 
-## Technical Requirements
+Este projeto foi construido usando a ferramenta [Lerna](https://lerna.js.org/) pra que ficasse mais legal trabalhar com _monorepos_.
 
-* REST API must be implemented using NodeJS and Express.
-* DBMS used must be MySQL.
-* Frontend must be implemented using either AngularJS or React (if you`ll use React, [click here](https://github.com/cloudiabot/cloudia_front_end_test/blob/master/README.md#if-using-react)).
-* All parts written in JavaScript must use ES6+.
-* ORM (Sequelize)
-* Git and Git Flow for version control.
-* Preferebly, the deploy must be on AWS.
-* Using DDD is a huge plus.
-* Using typescript is a must.
+### Instalando as dependencias do projeto
 
-## Evaluation Criteria
+```shell
+npx lerna bootstrap
+```
 
-### Code Delivered
+### Rodando as migrations e seeds no banco
 
-* Does it have version control?
-* Does it have dependency management?
-* Does the code execute correctly and completely through all application?
-* Does it have dependency control?
-* Does it comply with all requirements?
-* Does it have a visually pleasant user interface?
+```shell
+npx lerna run predev
+```
 
-### Good Practices
-* Is the code well structured?
-* Is the code easy to understand?
-* Does the code follow Clean Code practices?
-* Does the code use _Design Patterns_ correctly?
+Este comando roda toda vez que o comando `npm run dev` for chamado. Aqui, estamos chamando ele sozinho porque vamos executar o comando 'npx start' pra todos os pacotes do projeto.
 
-### Documentation
+### Levantando o projeto
 
-* Is there a well written README file on the project root folder that explains the project and how to run it?
-* Does the code have relevant comments?
-* Are the commit messages concise and clear?
+```shell
+npx lerna run --stream start
+```
+
+Se tudo deu certo, o webapp estará rodando no endereço http://localhost:8080 e a api no http://localhost:5000.
+
+## Testes
+
+Apenas a api possui testes e é possível rodar os testes executando o comando `npx lerna run test` ou `npm test` direto na do diretório da api.
+
+Qualquer dúvida, chama que a gente conversa.
