@@ -5,11 +5,11 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "predev": "sequelize --env=development db:create && sequelize --env=development db:migrate:undo:all & sequelize --env=development db:migrate && sequelize --env=development db:seed:all",
+    "predev": "sequelize --env=development db:create && sequelize --env=development db:migrate:undo:all && sequelize --env=development db:migrate && sequelize --env=development db:seed:all",
     "dev": "nodemon src/index.js",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "pretest": "sequelize --env=test db:create && sequelize --env=test db:migrate:undo:all & sequelize --env=test db:migrate && sequelize --env=test db:seed:all",
+    "pretest": "sequelize --env=test db:create && sequelize --env=test db:migrate:undo:all && sequelize --env=test db:migrate && sequelize --env=test db:seed:all",
     "test": "jest",
     "test:watch": "jest --watch"
   },
